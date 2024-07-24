@@ -50,7 +50,7 @@ fetch("currency.json")
     //Create an option element for each payment method
     const option = document.createElement("option");
     option.value = key;
-    option.textContent = `${method.name}`;
+    option.textContent = `${method.name} ${method.rate}`;
     selectElement.appendChild(option);
   });
 })
@@ -85,17 +85,33 @@ function handleSubmit(event) {
 
     const data = new FormData(event.target);
 
-    firstName = data.get("firstname");
-    lastName = data.get("lastname");
-    dateOfBirth = data.get("dob");
-    place = data.get("place");
-    amount = (Number)(data.get("amount"));
-    paymentMode = data.get("paymentmode");
-    currency = data.get("currency");
-    rateOfInterest = (Number)(data.get("roi"));
-    timePeriod = data.get("timeperiod");
-    EMI = data.get("emi");
-    year = (Number)(data.get("roi"));
+    const firstName = data.get("firstname");
+    const lastName = data.get("lastname");
+    const dateOfBirth = data.get("dob");
+    const place = data.get("place");
+    let amount = (Number)(data.get("amount"));
+    const paymentMode = data.get("paymentmode");
+    const currency = data.get("currency");
+    let rateOfInterest = (Number)(data.get("roi"));
+    const timePeriod = data.get("timeperiod");
+    const EMI = data.get("emi");
+    const year = (Number)(data.get("year"));
+
+    if(rateOfInterest == '1') {
+      rateOfInterest = 5
+    } else if(rateOfInterest === '2') {
+      rateOfInterest = 10
+    } else if(rateOfInterest == '3') {
+      rateOfInterest = 15
+    }
+
+    if(currency == '2') {
+      amount *= 80 
+    } else if(currency === '3') {
+      amount *= 55
+    } else if(currency === '4') {
+      amount *= 100
+    }
     
     const interest = (amount * rateOfInterest * year) / 100
     const total = amount + interest
@@ -108,7 +124,16 @@ function handleSubmit(event) {
     } else if(EMI === '3') {
         EMI_VALUE = total / year
     }
-    console.log(EMI_VALUE);
+
+    let result = `Hey!! ${firstName}${lastName} 
+    born on ${dob}, resident of ${place}. 
+    You took a loan of rs. ${amount} 
+    You have opted for EMI based on ${emi} basis for ${year} years at the rate of interest of ${rateOfInterest}. 
+    Yur calculated emi turns out to be ${EMI_VALUE} 
+    Thank you.` 
+
+    document.getElementById('result-paragraph').innerHTML = result
+  
 
 
 
