@@ -1,17 +1,16 @@
 {
     "1": {
-      "name": "Net Banking",
-      "description": "Pay securely with PayPal."
+      "name": "Net Banking"
     },
     "2": {
       "name": "UPI"
       
     },
-    "4": {
+    "3": {
       "name": "Cash on Delivery"
       
     },
-    "3": {
+    "4": {
       "name": "Card"
       
     }
