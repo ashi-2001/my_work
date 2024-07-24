@@ -1,0 +1,6 @@
+let result = `Hey!! ${firstname+lastname} 
+    born on ${dob} . 
+    You took a loan of rs. ${amount} 
+    You have opted for EMI based on ${emi} basis for ${year} years at the rate of interest of ${rateOfInterest}. 
+    Yur calculated emi turns out to be{result}
+    Thank you.` 
