@@ -1,0 +1,14 @@
+{
+    "1": {
+        "name": "INR"
+    },
+    "2": {
+        "name": "Dollar"
+    },
+    "3":{
+        "name":"euro"
+    },
+    "4":{
+        "name":"Dinar"
+    }
+}
